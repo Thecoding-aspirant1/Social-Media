@@ -1,17 +1,32 @@
 import "./right.css"
+import Online from "../../components/online/Online"; 
+import {Users} from "../../dummyData"
 
 export default function Rightbar() {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
         <div className="birthdayContainer">
-          <img className="birthdayImg" src="assets/post/tree" alt="" />
-          <span birthdayText>
-            
-          {" "}
-
-            <b>Pola Foster and 3 other friends</b></span>
+          <img className="birthdayImg" src="assets/gift.png" alt="" />
+          <span className="birthdayText">
+          <b>Priya</b> and <b>other friends</b> have a birthday today   
+         </span>
         </div>
+        <img src="/assets/ad.png" alt="" className="rightbarAd" />
+        <h4 className="rightbarTitle">Online Friends</h4>
+        <ul className="rightbarFriendList">
+
+           {Users.map(u => (
+            <Online key={u.id} user={u} />
+           ))}
+           
+
+          
+
+
+
+
+        </ul>
       </div>
     </div>
   )

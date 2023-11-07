@@ -1,16 +1,24 @@
 import "./post.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {Users} from "../../dummyData"
 
+export default function Post({post}) {
+  const user = Users.filter(u=>u.id==1)
+  
+  console.log(user[0].username);
 
-export default function Post() {
   return (
     <div className="post">
     <div className="postWrapping">
         <div className="postTop">
             <div className="postTopLeft">
-            <img src="/assets/person/third.jpg" alt="" className="postProfileImg"/>    
-            <span className="postUsername">Lisa</span>
-            <span className="postDate">5 mins ago </span>
+            <img src={Users.filter((u)=>u.id === post.userId)[0].profilePicture} alt="" className="postProfileImg"/>    
+            
+            <span className="postUsername">
+              {Users.filter((u)=>u.id === post.userId)[0].username}
+              </span>
+
+            <span className="postDate">{post.date}</span>
            
             </div>
             <div className="postTopRight">
@@ -18,8 +26,8 @@ export default function Post() {
             </div>
         </div>
         <div className="postCenter">
-            <span className="postText">Hey it's my First Post :)</span>
-            <img src="/assets/post/sunlight.jpg" alt="" className="postImg" width={700} height={700}/><br/>
+            <span className="postText">{post?.desc}</span>
+            <img src="{post.photo}" alt="" className="postImg" /><br/>
         </div>
 
         <div className="postBottom">
@@ -27,10 +35,10 @@ export default function Post() {
 
              <img className="likeIcon" src="/assets/like.png" alt=""  />
              <img  className="likeIcon" src="/assets/heart.png" alt=""   />
-             <span className="postLikeCounter">liked by 32 people</span>
+             <span className="postLikeCounter">liked by {post.like} people</span>
             </div>
             <div className="postBottomRight">
-              <span className="postCommentText">9 Comments</span>
+              <span className="postCommentText">{post.comment} Comments</span>
             </div>
         </div>
     </div>
