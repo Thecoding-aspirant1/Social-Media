@@ -3,7 +3,7 @@ import Share from "../share/Share"
 import Post from "../post/Post.jsx"
 import {Posts} from "../../dummyData"
 
-export default function feed() {
+export default function Feed() {
   return (
     <div className="feed">
       <div className="feedWrapper">
@@ -18,5 +18,5 @@ export default function feed() {
 
       </div>
     </div>
-  )
+  );
 }

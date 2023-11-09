@@ -37,8 +37,8 @@ export const Posts = [
  {
     id:1,
     desc:"Love For All,Hatred For None",
-    photo:"/assets/post/sunlight.jpg",
-     date:"5 min ago",
+    photo:"/assets/post/nature.jpg",
+    date:"5 min ago",
     userId: 1,
     like: 32,
     comment:9,
@@ -61,9 +61,22 @@ export const Posts = [
     desc:"Every moment is a fresh beginning.",
     userId:3,
     like:61,
-    photo:"/asset/post/tree.jpg"
+    photo:"/assets/post/books.jpg"
+
+  },
+
+
+  {
+    id:4,
+    comment:4,
+    date:"5 hours ago",
+    userId:4,
+    like:69,
+    photo:"/assets/person/fifth.jpg"
 
   }
+
+
 
 
 
