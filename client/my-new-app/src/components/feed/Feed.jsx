@@ -1,18 +1,38 @@
+// feed.jsx
+import { useState, useEffect } from "react";
 import "./feed.css"
 import Share from "../share/Share"
 import Post from "../post/Post.jsx"
-import {Posts} from "../../dummyData"
+import axios from "axios" 
 
 export default function Feed() {
+  const [post,setPost] = useState([]);
+  
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await axios.get("/post/timeline/654e402adcdb6afbc4084b48");
+        console.log("Response Data:", res.data); // Log the response data
+        console.log("Full Response Object:", res); // Log the entire response object
+        setPost(res.data);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    };
+  
+    fetchPosts();
+  }, [post]);
+
   return (
     <div className="feed">
+     
       <div className="feedWrapper">
         <Share/>
-        {Posts.map((p)=>(
+       {post.map((p)=>(
 
-        <Post key={p.id}  post={p}/>
+        <Post key={p._id}  post={p}/>
 
-        ))}
+        ))}    
         
         
 
