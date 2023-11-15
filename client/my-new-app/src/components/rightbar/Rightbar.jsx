@@ -3,7 +3,7 @@ import Online from "../../components/online/Online";
 import {Users} from "../../dummyData"
 
 export default function Rightbar({profile}) {
- 
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER; 
   const HomeRightbar = () =>{
     return(
       <>
@@ -51,22 +51,22 @@ export default function Rightbar({profile}) {
       <h4 className="rightbarTitle">User friends</h4>
       <div className="rightbarFollowings">
         <div className="rightbarFollowing">
-          <img className="rightbarFollowingImg" src="/assets/person/first.jpg" alt="" />
+          <img className="rightbarFollowingImg" src={`${PF}person/first.jpg`} alt="" />
           <span className="rightbarFollowingName">Sneha</span>
         </div>
 
         <div className="rightbarFollowing">
-          <img className="rightbarFollowingImg" src="/assets/person/third.jpg" alt="" />
+          <img className="rightbarFollowingImg" src={`${PF}person/third.jpg`} alt="" />
           <span className="rightbarFollowingName">Megha</span>
         </div>
 
         <div className="rightbarFollowing">
-          <img className="rightbarFollowingImg" src="/assets/person/second.jpg" alt="" />
+          <img className="rightbarFollowingImg" src={`${PF}person/second.jpg`} alt="" />
           <span className="rightbarFollowingName">Lisa</span>
         </div>
 
         <div className="rightbarFollowing">
-          <img className="rightbarFollowingImg" src="/assets/person/fifth.jpg" alt="" /><br/>
+          <img className="rightbarFollowingImg" src={`${PF}person/fifth.jpg`} alt="" /><br/>
           <span className="rightbarFollowingName">Priya</span>
         </div>
       </div>

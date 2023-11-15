@@ -1,30 +1,30 @@
 export const Users = [
     {
         id:1,
-        profilePicture: "/assets/person/second.jpg",
-        username:"Lisa",
+        profilePicture: "person/second.jpg",
+        username:"_Lisa_",
 
     },
 
     {
         id:2,
-        profilePicture: "/assets/person/first.jpg",
-        username:"Sneha",
+        profilePicture: "person/first.jpg",
+        username:"hey.Sneha",
 
     },
 
 
     {
         id:3,
-        profilePicture: "/assets/person/third.jpg",
-        username:"Megha",
+        profilePicture: "person/third.jpg",
+        username:"Megha_123",
 
     },
 
     {
         id:4,
-        profilePicture: "/assets/person/fifth.jpg",
-        username:"Priya",
+        profilePicture: "person/fifth.jpg",
+        username:"MynameisPriya",
 
     }
 
@@ -37,7 +37,7 @@ export const Posts = [
  {
     id:1,
     desc:"Love For All,Hatred For None",
-    photo:"/assets/post/nature.jpg",
+    photo:"post/nature.jpg",
     date:"5 min ago",
     userId: 1,
     like: 32,
@@ -47,7 +47,7 @@ export const Posts = [
   {
     id:2,
     desc:"Baby I'm yours",
-    photo:"/assets/post/sunlight.jpg",
+    photo:"post/sunlight.jpg",
     date:"15 min ago",
     userId: 2,
     like: 2,
@@ -60,8 +60,8 @@ export const Posts = [
     date:"1 hour ago",
     desc:"Every moment is a fresh beginning.",
     userId:3,
-    like:61,
-    photo:"/assets/post/books.jpg"
+    like:51,
+    photo:"post/books.jpg"
 
   },
 
@@ -70,9 +70,10 @@ export const Posts = [
     id:4,
     comment:4,
     date:"5 hours ago",
+    desc:"Hello guys mera naam Priya hai aur main van main rehti hoon",
     userId:4,
-    like:69,
-    photo:"/assets/person/fifth.jpg"
+    like:49,
+    photo:"person/fifth.jpg"
 
   }
 

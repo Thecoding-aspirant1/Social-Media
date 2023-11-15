@@ -1,6 +1,6 @@
 import "./top.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import {Link} from "react-router-dom"
 
 
 export default function Topbar() {
@@ -8,7 +8,11 @@ export default function Topbar() {
     <div>
       <div className="topbarContainer">
         <div className="topbarLeft">
+
+          <Link to="/" style={{textDecoration:"none"}}>
           <span className="logo">Socialbook</span>
+          </Link>
+
         </div>
         <div className="topbarCenter">
           <div className="searchbar">
