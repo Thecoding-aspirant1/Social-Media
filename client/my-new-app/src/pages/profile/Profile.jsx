@@ -5,17 +5,19 @@ import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
 import {useState,useEffect} from "react";
 import axios from "axios"
+import {useParams} from "react-router"; 
 
 export default function Profile() {
 
    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
    
    const [users,setUser] = useState({});
-  
+   const username = useParams().username
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`/users?username=jane`);
+        const res = await axios.get(`/users?username=${username}`);
         console.log("Response Data:", res.data); // Log the response data
         console.log("Full Response Object:", res); // Log the entire response object
         setUser(res.data);
@@ -25,7 +27,7 @@ export default function Profile() {
     };
   
     fetchUser();
-  }, []);
+  }, [username]);
   
 
 
@@ -38,8 +40,8 @@ export default function Profile() {
         <div className="profileRight">
          <div className="profileRightTop">
             <div className="profileCover">
-            <img className="profileUserImg" src={`${PF}person/fourth.jpg`} alt=""/>  
-            <img className="profileCoverImg" src={`${PF}post/mountains.jpeg`} alt=""/>
+            <img className="profileUserImg" src={users.profilePicture || PF+"/person/noavataar.png"} alt=""/>  
+            <img className="profileCoverImg" src={users.coverPicture || PF+"/person/nocover.png"} alt=""/>
             
          </div>
          <div className="profileInfo">
@@ -50,7 +52,7 @@ export default function Profile() {
          </div>
          <div className="profileRightBottom">
 
-         <Feed username="jane"/>
+         <Feed username={username}/>
         <Rightbar users={users}/>
 
          </div>

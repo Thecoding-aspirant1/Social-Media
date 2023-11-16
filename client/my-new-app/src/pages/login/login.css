@@ -70,6 +70,15 @@
    font-weight: 500;
 }
 
+.loginButton:hover {
+    border: 2px solid black;
+   
+
+}
+.loginButton:disabled{
+    cursor: not-allowed;
+}
+
 .loginRegisterButton{
     
     border-radius: 5px;

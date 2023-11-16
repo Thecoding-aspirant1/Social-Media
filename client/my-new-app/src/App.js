@@ -7,19 +7,23 @@ import Profile from "./pages/profile/Profile"
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
-import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
-
+import { BrowserRouter as Router,Routes,Route,Navigate } from "react-router-dom";
+import {useContext} from "react";
+import { AuthContext } from "./context/AuthContext"
 
 //import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function App() {
+  
+  const {user} = useContext(AuthContext)
   return (
+
     <Router>
     <Routes>
 
-        <Route exact path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route exact path="/" element={user? <Home/> :<Navigate to= "/register" />} />
+        <Route path="/login" element={user? <Navigate to="/"/> : <Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile/:username" element={<Profile />} />
     
