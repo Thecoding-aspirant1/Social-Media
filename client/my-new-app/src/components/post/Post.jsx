@@ -1,23 +1,23 @@
 import "./post.css"
 import { useState,useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import axios from "axios" 
+import axios from "axios"
 import {format} from "timeago.js"
 
 
 
 export default function Post({post}) {
-  const PF= process.env.REACT_APP_PUBLIC_FOLDER
-  
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const [like,setLike] = useState(post.likes.length)
   const [isLiked,setisLiked] = useState(false)
-
   const [users,setUser] = useState({})
+   
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`users/${post.userId}`);
+        const res = await axios.get(`users?userId=${post.userId}`);
         console.log("Response Data:", res.data); // Log the response data
         console.log("Full Response Object:", res); // Log the entire response object
         setUser(res.data);
@@ -28,13 +28,13 @@ export default function Post({post}) {
   
     fetchUser();
   }, [post.userId]);
-   
+
   const likeHandler =()=>{
     setLike(isLiked ? like-1 :like+1)
     setisLiked(!isLiked)
   }
   
-  
+  //const user = Users.filter(u=>u.id===1)
   
   //console.log(user[0].username);
 
@@ -43,7 +43,7 @@ export default function Post({post}) {
     <div className="postWrapping">
         <div className="postTop">
             <div className="postTopLeft">
-            <img src={users.profilePicture || PF+"person/noavataar.png"} alt="" className="postProfileImg"/>    
+            <img src={users.profilePicture  || PF+"/person/noavataar.png"} alt="" className="postProfileImg"/>    
             
             <span className="postUsername">
               {users.username}
