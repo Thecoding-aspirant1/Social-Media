@@ -1,0 +1,19 @@
+.messenger {
+    height: calc(100vh-70px);
+    display: flex;
+}
+
+.chatMenu {
+    flex: 3.5;
+    background-color: aquamarine;
+}
+
+.chatBox {
+    flex:5.5;
+    background-color: blueviolet;
+}
+
+.chatOnline {
+    flex:3.5;
+    background-color: bisque;
+}

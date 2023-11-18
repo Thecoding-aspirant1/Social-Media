@@ -9,7 +9,7 @@ export default function Register() {
   const password = useRef();
   const passwordAgain = useRef();
   const history = useNavigate();
-  const [error, setError] = useState(null);
+  const [error, setError] = useState({});
 
   const handleClick = async (e) => {
     e.preventDefault();

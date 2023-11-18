@@ -1,3 +1,4 @@
+//client ..Topbar.jsx
 import "./top.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {Link} from "react-router-dom"
@@ -8,6 +9,12 @@ export default function Topbar() {
  
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const {user} = useContext(AuthContext)
+
+
+  if (!user) {
+    // You can return some loading state or an empty div here, depending on your requirements
+    return null
+  }
 
   return (
     <div>
@@ -33,7 +40,7 @@ export default function Topbar() {
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
-           <i><FontAwesomeIcon icon="fa-solid fa-user" clasName="user"/></i>
+           <i><FontAwesomeIcon icon="fa-solid fa-user" className="user"/></i>
            
           </div>
 

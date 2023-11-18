@@ -123,3 +123,24 @@
 .rightbarInfoItem {
     margin-bottom: 10px;
 }
+
+.rightbarFollowButton {
+    margin-bottom: 10px;
+    border: none;
+    background-color: teal;
+    color: aliceblue;
+    height:40px;
+    width: 90px;
+    margin-left: 20px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+
+}
+
+.rightbarFollowButton:hover {
+ border: 1px white solid;
+
+}

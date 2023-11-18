@@ -1,18 +1,25 @@
 import "./post.css"
-import { useState,useEffect } from "react"
+import { useState,useEffect,useContext } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from "axios"
 import {format} from "timeago.js"
-
+import{Link} from "react-router-dom"
+import {AuthContext} from "../../context/AuthContext"
 
 
 export default function Post({post}) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
+  const {user:currentUser} = useContext(AuthContext)
   const [like,setLike] = useState(post.likes.length)
   const [isLiked,setisLiked] = useState(false)
   const [users,setUser] = useState({})
    
+
+  useEffect(() => {
+    // Check if the current user's ID is in the post.likes array
+    const likedByCurrentUser = post.likes.includes(currentUser._id);
+    setisLiked(likedByCurrentUser);
+  }, [currentUser._id, post.likes]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -30,6 +37,11 @@ export default function Post({post}) {
   }, [post.userId]);
 
   const likeHandler =()=>{
+    try{
+       axios.put("/post/"+post._id+"/like",{userId:currentUser._id})
+    } catch{
+
+    }
     setLike(isLiked ? like-1 :like+1)
     setisLiked(!isLiked)
   }
@@ -43,8 +55,10 @@ export default function Post({post}) {
     <div className="postWrapping">
         <div className="postTop">
             <div className="postTopLeft">
-            <img src={users.profilePicture  || PF+"/person/noavataar.png"} alt="" className="postProfileImg"/>    
-            
+            <Link to={`/profile/${users.username}`}>
+            <img src={users.profilePicture ? PF+ users.profilePicture : PF+"/person/noavataar.png"} alt="" className="postProfileImg"/>    
+            </Link>
+
             <span className="postUsername">
               {users.username}
               </span>
