@@ -10,11 +10,11 @@ export default function Topbar() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const {user} = useContext(AuthContext)
 
-
   if (!user) {
     // You can return some loading state or an empty div here, depending on your requirements
     return null
   }
+  
 
   return (
     <div>

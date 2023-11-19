@@ -7,14 +7,18 @@ import {useEffect,useState,useContext} from "react"
 import axios from "axios"
 import {AuthContext} from "../../context/AuthContext"
 import {Link} from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+
 
 export default function Rightbar({users}) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER; 
   const [friends, setFriends] = useState([]);
-  const { user: currentUser } = useContext(AuthContext);
-  const [followed,setFollowed] =useState(false)
+  const { user: currentUser,dispatch } = useContext(AuthContext);
+  const [followed,setFollowed] =useState(currentUser.followings.includes(users?._id))
   
+
   useEffect(()=>{
     setFollowed(currentUser.followings.includes(users?._id))
   },[currentUser,users])
@@ -33,17 +37,23 @@ export default function Rightbar({users}) {
   
 
   const handleClick = async () =>{
-    try{
-      if(followed){
-        await axios.put("/users/"+users._id+"/follow",{userId:currentUser._id})
-      }else{
-        await axios.put("/users/"+users._id+"/unfollow",{userId:currentUser._id})
+  
+    try {
+      if (followed) {
+        await axios.put(`/users/${users._id}/unfollow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "UNFOLLOW", payload: users._id });
+      } else {
+        await axios.put(`/users/${users._id}/follow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "FOLLOW", payload: users._id });
       }
-
-    }catch(err){
-      console.log(err)
+      setFollowed(!followed);
+    } catch (err) {
     }
-    setFollowed(!followed)
+
   }
   
   
@@ -79,9 +89,8 @@ export default function Rightbar({users}) {
      
       {users.usename!==currentUser.username && (
         <button className="rightbarFollowButton" onClick={handleClick}>
-          {followed ? "unfollow" : "Follow"}
-          {followed ? <i><FontAwesomeIcon icon="fa-solid fa-xmark" /></i> : <i><FontAwesomeIcon icon="fa-solid fa-plus" /></i> }
-          Follow <i><FontAwesomeIcon icon="fa-solid fa-plus" /></i>
+          {followed ? "unfollow" : "follow"}
+          {followed ? <RemoveIcon /> : <AddIcon />}
         </button>
       )}
       <div className="rightbarDiv">
@@ -105,11 +114,11 @@ export default function Rightbar({users}) {
       <h4 className="rightbarTitle">User friends</h4>
       
       <div className="rightbarFollowings">
-        {friends.map(friend =>(
-        <Link to={"/profile/" + friend.userId} style={{textDecoration:"none"}}>
+        {friends.map(friends =>(
+        <Link to={"/profile/" + friends.username} style={{textDecoration:"none"}}>
            <div className="rightbarFollowing">
-           <img className="rightbarFollowingImg" src={friend.profilePicture ? PF+friend.profilePicture :PF+"/person/noavataar.png"} alt="" />
-           <span className="rightbarFollowingName">{friend.username}</span>
+           <img className="rightbarFollowingImg" src={friends.profilePicture ? PF+friends.profilePicture :PF+"/person/noavataar.png"} alt="" />
+           <span className="rightbarFollowingName">{friends.username}</span>
               </div>
          </Link>
 
