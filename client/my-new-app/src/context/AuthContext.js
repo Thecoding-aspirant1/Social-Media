@@ -9,24 +9,20 @@ try {
 } catch (error) {
   console.error("Error parsing user from localStorage:", error);
   // Handle the error if needed
-}
+} 
 const INITIAL_STATE = {
- /* user:{
-        _id:"6557664a42a89bb469f97c08",
-        username:"vidhigupta",
-        email:"vidhi123@gmail.com",
-        password:"vidhi123456",
-        profilePicture:"",
-        coverPicture:"",
-        followers:[],
-        followings:[1,2],
-        isAdmin:false,
-        desc:"Happy Coder" 
+  /*  user:{
+        _id:"6558d373b70167f0ea22979c",
+         conversationId:"6558d0208e71a459cd19d7a7"
+        
+
+       
+       
        
     },  */
     
     user: parsedUser,
-   // user:JSON.parse(localStorage.getItem("user")) || null ,
+  
     isFetching:false,
     error: false
 }
@@ -40,7 +36,7 @@ export const AuthContextProvider = ({children}) => {
 
     useEffect(()=>{
         localStorage.setItem("user", JSON.stringify(state.user))
-      },[state.user])
+      },[state.user]) 
     
 
     return(

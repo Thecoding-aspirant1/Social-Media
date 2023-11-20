@@ -2,6 +2,7 @@
    
     height: calc(100vh - 70px);
     display: flex;
+    margin-top: 50px;
 }  
 
 .chatMenu{
@@ -25,6 +26,8 @@
 .chatBoxWrapper {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    position: relative;
 }
 
 .chatBoxTop{
@@ -66,4 +69,15 @@
 
 .chatMenuWrapper{
     overflow-y: scroll;
+}
+
+
+.noConversationText {
+    position: absolute;
+    margin-top: 50px;
+    font-size: 50px;
+    color: rgb(182, 181, 181);
+    
+    cursor: default;
+
 }
