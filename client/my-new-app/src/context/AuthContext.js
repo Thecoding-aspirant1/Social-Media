@@ -11,15 +11,6 @@ try {
   // Handle the error if needed
 } 
 const INITIAL_STATE = {
-  /*  user:{
-        _id:"6558d373b70167f0ea22979c",
-         conversationId:"6558d0208e71a459cd19d7a7"
-        
-
-       
-       
-       
-    },  */
     
     user: parsedUser,
   
