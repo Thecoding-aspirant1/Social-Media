@@ -16,4 +16,4 @@ features
 I have also implemented Messenging  feature using Socket IO which is responsible for Real-Time Chat Application.
 
 
-<img width="933" alt="Screenshot 2023-12-03 180636" src="https://github.com/Thecoding-aspirant1/Social-Media/assets/136263513/28d4af3f-154b-4396-9106-11ad430f3115">
+<img width="945" alt="Screenshot 2023-12-03 181932" src="https://github.com/Thecoding-aspirant1/Social-Media/assets/136263513/700bf4e2-764e-45ae-9860-f0152d48c47a">
