@@ -24,11 +24,11 @@ function App() {
     <Routes>
 
         <Route exact path="/" element={user? <Home/> :<Navigate to= "/register" />} />
-        <Route path="/login" element={user?  <Navigate to="/"/> :<Login/>} />
+        <Route path="/login" element={user? <Navigate to="/"/> : <Login/>  } />
         
-        <Route path="/register" element={user ? <Navigate to="/"/>:<Register />} />
+        <Route path="/register" element={user ?  <Navigate to="/"/>:<Register />} />
 
-        <Route path="/messenger" element={user ? <Messenger/> : <Messenger />} />
+        <Route path="/messenger" element={user ? <Messenger /> : <Messenger />} />
         
         <Route path="/profile/:username" element={<Profile />} />
     

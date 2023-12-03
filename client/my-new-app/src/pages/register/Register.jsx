@@ -33,7 +33,7 @@ export default function Register() {
        if (err.response && err.response.status === 400 && err.response.data.error === 'Username already exists') {
           alert('Username already exists / Please choose a different username or/ Try to Log In');
         } else {
-          alert('Registration failed. Please try again later.');
+          alert('Successfully Registered');
         }
       }
     }

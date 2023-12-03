@@ -45,8 +45,11 @@ export default function Topbar() {
           </div>
 
           <div className="topbarIconItem">
-           <i><FontAwesomeIcon icon="fa-solid fa-message" /></i>
            
+           <Link to="/messenger" style={{textDecoration:"none",color:"white"}}>
+           <i><FontAwesomeIcon icon="fa-solid fa-message" /></i>
+           </Link>
+
           </div>
 
           <div className="topbarIconItem">

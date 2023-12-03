@@ -3,11 +3,6 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
-const crypto = require('crypto');
-
-
 
 
 // Register a new user
@@ -70,69 +65,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-//FORGOT PASSWORD
-router.post('/forgot-password', async (req, res) => {
-  try {
-    const { email } = req.body;
-
-    // Find the user with the provided email
-    const user = await User.findOne({ email });
-
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-
-    // Generate a unique token
-    const token = crypto.randomBytes(20).toString('hex');
-
-    // Save the token and associate it with the user's email (you can use a database or in-memory storage)
-    // In a production environment, consider using a more secure and persistent storage solution for tokens
-    resetTokens.set(email, token);
-   
-    // Send password reset email
-    const resetLink = `http://your-app.com/reset-password?token=${token}`;
-    const mailOptions = {
-      from: 'your_email@gmail.com',
-      to: email,
-      subject: 'Password Reset',
-      text: `Click on the following link to reset your password: ${resetLink}`,
-    };
-
-    await transporter.sendMail(mailOptions);
-
-    res.status(200).json({ message: 'Password reset email sent. Check your inbox.' });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-//RESET PASSWORD
-
-router.post('/reset-password', async (req, res) => {
-  try {
-    const { email, token, newPassword } = req.body;
-
-    // Check if the token is valid
-    if (resetTokens.get(email) !== token) {
-      return res.status(400).json({ error: 'Invalid or expired token' });
-    }
-
-    // Update the user's password in the database (you should hash and salt the password)
-    const user = await User.findOne({ email });
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(newPassword, salt);
-    user.password = hashedPassword;
-    await user.save();
-
-    
-    resetTokens.delete(email);
-
-    res.status(200).json({ message: 'Password reset successful' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json(err);
-  }
-});
 
 
 module.exports = router;

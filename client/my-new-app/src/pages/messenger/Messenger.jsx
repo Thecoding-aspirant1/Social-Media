@@ -53,10 +53,6 @@ export default function Messenger() {
   }, [arrivalMessage,currentChat]);
 
 
-
-
-
-
   useEffect(()=>{
     const getConversations = async () => {
       try {

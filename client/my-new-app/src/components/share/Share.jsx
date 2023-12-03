@@ -98,7 +98,7 @@ export default function Share() {
   const submitHandler = async (e) => {
     e.preventDefault();
     const newPost = {
-      userId: user?._id, // Make sure user is not undefined
+      userId: user?._id,  // Make sure user is not undefined
       desc: desc.current.value,
     };
     if (file) {
