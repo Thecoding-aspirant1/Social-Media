@@ -1,7 +1,7 @@
 # Social-Media
 A social media web application named as 
 'SocialBook' where you can interact with the people of all over the world
-
+It is a Mern Project.
 features
 >Registration
 >Login
